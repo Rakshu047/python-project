@@ -4,7 +4,7 @@ from grid import Grid
 pygame.init()
 screen = pygame.display.set_mode((300,600))
 pygame.display.set_caption("Tetris")
-background = (27, 24, 17)
+background = (44, 44, 127)
 clock = pygame.time.Clock()
 
 game_grid = Grid()
@@ -17,6 +17,8 @@ while True:
             sys.exit()
     
     screen.fill(background)
+
     game_grid.draw(screen)
+
     pygame.display.update()
     clock.tick(60)
