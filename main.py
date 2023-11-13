@@ -1,5 +1,6 @@
 import pygame,sys
 from grid import Grid
+from blocks import *
 
 pygame.init()
 screen = pygame.display.set_mode((300,600))
@@ -8,7 +9,7 @@ background = (44, 44, 127)
 clock = pygame.time.Clock()
 
 game_grid = Grid()
-game_grid.print_grid()
+block = ZBlock()
 
 while True:
     for event in pygame.event.get():
@@ -17,8 +18,8 @@ while True:
             sys.exit()
     
     screen.fill(background)
-
     game_grid.draw(screen)
+    block.draw(screen)
 
     pygame.display.update()
     clock.tick(60)
