@@ -31,6 +31,11 @@ class Game:
         if self.block_inside() == False:
             self.cur_block.move(-1,0)
 
+    def rotate(self):
+        self.cur_block.rotate()
+        if self.block_inside() == False:
+            self.cur_block.undo_rotate()
+
     def block_inside(self):
         tiles = self.cur_block.get_cell_position()
         for tile in tiles:
