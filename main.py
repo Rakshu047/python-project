@@ -10,23 +10,26 @@ clock = pygame.time.Clock()
 game = Game()
 
 GAME_UPDATE = pygame.USEREVENT
-pygame.time.set_timer(GAME_UPDATE,200)
+pygame.time.set_timer(GAME_UPDATE,20)
 
 while True:
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT :
             pygame.quit()
             sys.exit()
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
+            if game.game_over == True:
+                game.game_over = False
+                game.reset()
+            if event.key == pygame.K_LEFT and game.block_fits() == True:
                 game.move_left()
-            if event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_RIGHT and game.block_fits() == True:
                 game.move_right()
-            if event.key == pygame.K_DOWN:
+            if event.key == pygame.K_DOWN and game.block_fits() == True:
                 game.move_down()
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_UP and game.block_fits() == True:
                 game.rotate()
-        if event.type == GAME_UPDATE:
+        if event.type == GAME_UPDATE and game.block_fits() == True:
             game.move_down()
     
     screen.fill(background)

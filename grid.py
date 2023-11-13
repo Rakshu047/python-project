@@ -49,6 +49,11 @@ class Grid:
             elif comp >0:
                 self.move_row_down(row,comp)
         return comp
+    
+    def reset(self):
+        for row in range(self.num_rows):
+            for col in range(self.num_cols):
+                self.grid[row][col] = 0
 
     def draw(self, screen):
         for row in range(self.num_rows):
